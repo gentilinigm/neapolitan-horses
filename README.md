@@ -1,6 +1,6 @@
 <p align="center"><img src="https://i.imgur.com/aJmAc74.png" alt="Logo" width="200"></p>
 <h1 align="center">Neapolitan Horses<br>
-	<a href="https://github.com/gentilinigm/neapolitan-horses/blob/main/LICENSE"><img src="https://img.shields.io/github/license/gentilinigm/neapolitan-horses?style=flat&color=900c3f" alt="License"></a>
+	<a href="https://github.com/gentilinigm/neapolitan-horses/blob/main/LICENSE"><img src="https://img.shields.io/github/license/gentilinigm/neapolitan-horses?style=flat&color=lightgray" alt="License"></a>
 </h1>
 
 <p>A very Italian mod.</p>
