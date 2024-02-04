@@ -13,9 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public final class NeapolitanHorseRenderer extends AbstractHorseRenderer<NeapolitanHorse, HorseModel<NeapolitanHorse>> {
     public NeapolitanHorseRenderer(EntityRendererProvider.Context context) {
         super(context, new HorseModel<>(context.bakeLayer(ModelLayers.HORSE)), 1.1F);
-
-        //TODO display armor?
-        //this.addLayer(new HorseArmorLayer(this, context.getModelSet()));
+        this.addLayer(new NeapolitanHorseArmorLayer(this, context.getModelSet()));
     }
 
     @Override
