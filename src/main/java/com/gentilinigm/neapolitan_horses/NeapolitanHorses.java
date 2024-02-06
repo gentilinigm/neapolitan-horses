@@ -23,7 +23,7 @@ public class NeapolitanHorses
     // Directly reference a slf4j logger
     public static final String MODID = "neapolitan_horses";
     public static final String NAME = "Neapolitan Horses";
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.1.1";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
