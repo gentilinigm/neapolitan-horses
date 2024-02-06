@@ -1,5 +1,6 @@
 package com.gentilinigm.neapolitan_horses.entity;
 
+import com.gentilinigm.neapolitan_horses.config.CommonConfig;
 import com.gentilinigm.neapolitan_horses.registry.EntityTypeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -219,14 +220,12 @@ public class NeapolitanHorse extends AbstractHorse {
 
     @Override
     protected void randomizeAttributes() {
-        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue((double)this.generateRandomMaxHealth());
-        this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(this.generateRandomJumpStrength());
+        double maxHealthConfig = CommonConfig.NEAPOLITAN_HORSE_CONFIG.MAX_HEALTH.get();
+        double jumpStrengthConfig = CommonConfig.NEAPOLITAN_HORSE_CONFIG.JUMP_STRENGTH.get();
+        double movementSpeedConfig = CommonConfig.NEAPOLITAN_HORSE_CONFIG.MOVEMENT_SPEED.get();
 
-        this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(this.getMaxSpeed());
-
-    }
-
-    protected double getMaxSpeed(){
-        return ((double)0.45F + /*this.random.nextDouble()*/ 1.0D * 0.3D + /*this.random.nextDouble()*/ 1.0D * 0.3D + /*this.random.nextDouble()*/ 1.0D * 0.3D) * 0.25D;
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue((maxHealthConfig < 0) ? this.generateRandomMaxHealth() : maxHealthConfig);
+        this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue((jumpStrengthConfig < 0) ? this.generateRandomJumpStrength() : jumpStrengthConfig);
+        this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue((movementSpeedConfig < 0) ? this.generateRandomSpeed() : movementSpeedConfig);
     }
 }

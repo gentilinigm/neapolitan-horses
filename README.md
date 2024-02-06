@@ -8,6 +8,7 @@
 <p>A very Italian mod.</p>
 <p>Allows all horses to have up to 4 passengers, each passenger must remove the helmet before riding.</p>
 <p>Introduces a new entity, the Neapolitan Horse, spawning on the plains biome.<br>
-This horse, along with some very cool skin details, will always have the maximum possible speed property.</p>
+This horse, along with some very cool skin details, will always have the maximum possible speed property (by default).</p>
+<p>Everything is fully configurable.</p>
 
 <p align="center"><img src="https://i.imgur.com/tveTxYC.png" width="600"></p>

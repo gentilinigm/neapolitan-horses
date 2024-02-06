@@ -1,5 +1,6 @@
 package com.gentilinigm.neapolitan_horses.mixin;
 
+import com.gentilinigm.neapolitan_horses.config.CommonConfig;
 import net.minecraft.world.ContainerListener;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -18,7 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractHorse.class)
 public abstract class HorseAllowMoreRidersMixin extends Animal implements ContainerListener, PlayerRideableJumping, Saddleable {
 
-    private static final int MAX_PASSENGERS = 4;
+
+    private static final int MAX_PASSENGERS = CommonConfig.GENERAL_CONFIG.MAXIMUM_PASSENGERS.get();
 
     @Shadow
     private float standAnimO;

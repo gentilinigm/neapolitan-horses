@@ -1,11 +1,15 @@
 package com.gentilinigm.neapolitan_horses;
 
+import com.gentilinigm.neapolitan_horses.config.ClientConfig;
+import com.gentilinigm.neapolitan_horses.config.CommonConfig;
 import com.gentilinigm.neapolitan_horses.registry.EntityTypeRegistry;
 import com.gentilinigm.neapolitan_horses.registry.ItemRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -34,11 +38,14 @@ public class NeapolitanHorses
         // Register the processIMC method for modloading
         modEventBus.addListener(this::processIMC);
 
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 
         EntityTypeRegistry.register(modEventBus);
         ItemRegistry.register(modEventBus);
+
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event)

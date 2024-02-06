@@ -1,5 +1,6 @@
 package com.gentilinigm.neapolitan_horses.mixin;
 
+import com.gentilinigm.neapolitan_horses.config.CommonConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
@@ -20,7 +21,7 @@ public class DisableRidingWithHelmetMixin{
 
    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;setEating(Z)V", shift = At.Shift.AFTER), method = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;doPlayerRide(Lnet/minecraft/world/entity/player/Player;)V", cancellable = true)
     protected void hasHelmet(Player player, CallbackInfo ci) {
-        if (!player.getItemBySlot(EquipmentSlot.HEAD).isEmpty()) {
+        if (CommonConfig.GENERAL_CONFIG.REMOVE_HELMET.get() && !player.getItemBySlot(EquipmentSlot.HEAD).isEmpty()) {
 
             Component message = getHelmetMessage();
             if(message != null)

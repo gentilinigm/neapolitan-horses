@@ -1,5 +1,6 @@
 package com.gentilinigm.neapolitan_horses.render;
 
+import com.gentilinigm.neapolitan_horses.config.ClientConfig;
 import com.gentilinigm.neapolitan_horses.entity.NeapolitanHorse;
 import net.minecraft.client.model.HorseModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -13,7 +14,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public final class NeapolitanHorseRenderer extends AbstractHorseRenderer<NeapolitanHorse, HorseModel<NeapolitanHorse>> {
     public NeapolitanHorseRenderer(EntityRendererProvider.Context context) {
         super(context, new HorseModel<>(context.bakeLayer(ModelLayers.HORSE)), 1.1F);
-        this.addLayer(new NeapolitanHorseArmorLayer(this, context.getModelSet()));
+
+        if(ClientConfig.RENDER_ARMOR.get())
+            this.addLayer(new NeapolitanHorseArmorLayer(this, context.getModelSet()));
     }
 
     @Override
