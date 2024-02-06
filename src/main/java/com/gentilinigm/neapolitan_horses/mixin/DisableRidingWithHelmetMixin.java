@@ -8,6 +8,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,8 +22,11 @@ public class DisableRidingWithHelmetMixin{
 
    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;setEating(Z)V", shift = At.Shift.AFTER), method = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;doPlayerRide(Lnet/minecraft/world/entity/player/Player;)V", cancellable = true)
     protected void hasHelmet(Player player, CallbackInfo ci) {
-        if (CommonConfig.GENERAL_CONFIG.REMOVE_HELMET.get() && !player.getItemBySlot(EquipmentSlot.HEAD).isEmpty()) {
-
+        if (CommonConfig.GENERAL_CONFIG.REMOVE_HELMET.get()
+                && !player.getItemBySlot(EquipmentSlot.HEAD).isEmpty()
+                && player.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof ArmorItem armorItem
+                && armorItem.getDefense() > 0) {
+            
             Component message = getHelmetMessage();
             if(message != null)
                 player.displayClientMessage(message, true);
