@@ -67,6 +67,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'neapolitan_horses'
 
             arg "-mixin.config=neapolitan_horses.mixins.json"
+            arg "--username=Diego60"
 
             mods {
                 neapolitan_horses {
